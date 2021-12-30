@@ -15,29 +15,29 @@ contract('Ballot Contract', function (accounts) {
   //Positive Test 2
   it("Valid user registration", function() {
     return ballotInstance.register(accounts[1], { from: accounts[0]}).then(function (result) {
-      assert.equal('0x01', result.receipt.status, 'Registration is valid');
+      assert.equal(result.receipt.status, '0x1', 'Registration is valid');
       return ballotInstance.register(accounts[2], { from: accounts[0]});
     }).then(function (result) {
-      assert.equal('0x01', result.receipt.status, 'Registration is valid');
+      assert.equal(result.receipt.status, '0x1', 'Registration is valid');
       return ballotInstance.register(accounts[3], { from: accounts[0]});
     }).then(function(result) {
-      assert.equal('0x01', result.receipt.status, 'Registration is valid');
+      assert.equal(result.receipt.status, '0x1', 'Registration is valid');
     });
   });
 
   //Positive Test 3
   it("Valid voting", function() {
     return ballotInstance.vote(2, {from: accounts[0]}).then(function (result) {
-      assert.equal('0x01', result.receipt.status, 'Voting is done');
+      assert.equal(result.receipt.status, '0x1', 'Voting is done');
       return ballotInstance.vote(1, {from: accounts[1]});
     }).then(function (result) {
-      assert.equal('0x01', result.receipt.status, 'Voting is done');
+      assert.equal(result.receipt.status, '0x1', 'Voting is done');
       return ballotInstance.vote(1, {from: accounts[2]});
     }).then(function (result) {
-      assert.equal('0x01', result.receipt.status, 'Voting is done');
+      assert.equal(result.receipt.status, '0x1', 'Voting is done');
       return ballotInstance.vote(1, {from: accounts[3]});
     }).then(function (result) {
-      assert.equal('0x01', result.receipt.status, 'Voting is done');
+      assert.equal(result.receipt.status, '0x1', 'Voting is done');
     });
   });
 
